@@ -8,7 +8,7 @@ This is a Trello automation tool which provides you with approaches to add cards
 
 To run this program, you need to have your own api key and token for authentication.
 
-- Go to [Trello Admin](https://trello.com/power-ups/admin)
+- First log into your Trello.com and Go to [Trello Admin](https://trello.com/power-ups/admin)
 
 - Navigate to "Power-Ups" under "App", if you already have any power-ups that you want to use, you can directly click on that power-up. Otherwise, click "New" to create a new power-up.
 
