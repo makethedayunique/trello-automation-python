@@ -59,6 +59,12 @@ Are you ready to add a card to your board? (y/n)
 
 - Modify the user interface. Even if it is a CLI program, there could be much modification to make it more user friendly for users.
 
-- Make it tested among users and collect feedbacks. Constantly modify the code based on the feedbacks.
+- Make it tested among users and collect feedbacks. Continuously modify the code based on the feedbacks.
 
-- Add more functions to the program to add more values. Such as adding columns and labels.
+- Add more functions to the program to make the program smoother. Such as adding columns and labels.
+
+- After fully testing, build and package the CLI program into distribution form. And finally publish the package to official PyPI.
+
+---
+
+**Author: Xiaoting Wang**
