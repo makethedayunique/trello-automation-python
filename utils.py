@@ -1,3 +1,4 @@
+"""Classes of utilities used in this program"""
 import requests
 from settings import API_KEY, API_TOKEN
 
@@ -6,8 +7,8 @@ class Requester:
     
     This is the class which will handle get and post requests to Trello endpoint
     """
-    def __init__(self):
-        # Initiate the key and token from the .env file
+    def __init__(self) -> None:
+        """Initiate the key and token from the .env file"""
         self.key = API_KEY
         self.token = API_TOKEN
         self.headers = {"Accept": "application/json"}
@@ -16,7 +17,8 @@ class Requester:
           'token': self.token
         }
     
-    def send_get_request(self, url, params={}):
+    def send_get_request(self, url: str, params={}) -> dict:
+        """Send the get request and return the wrapped result"""
         result = {}
         # Append the initialized params into the query
         for key in self.query:
@@ -37,7 +39,8 @@ class Requester:
             result["json_content"] = None
         return result
     
-    def send_post_request(self, url, params={}):
+    def send_post_request(self, url: str, params={}) -> dict:
+        """Send the post request and return the wrapped result"""
         result = {}
         # Append the key, token parameters into the query
         for key in self.query:

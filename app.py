@@ -10,18 +10,23 @@ from models import Requester, Board, Column
 from settings import BOARDS_URL
 import sys
 
-def print_values(values):
-    # This function will print the iterable along with their indexes
+def print_values(values: list) -> None:
+    """This function will print the iterable along with their indexes"""
     if len(values) == 0:
         print("There is nothing in this list")
     for i, value in enumerate(values):
         print("{}. {}".format(i + 1, value))
 
-def show_select_boards(requester: Requester):
-    # This function will handle the show boards and select from boards
-    # It will return a status, a message and the board selected
-    # Status: 0 - proceed to next; 1 - error, exit program; 2 - return to main
+def show_select_boards(requester: Requester) -> tuple:
+    """
+    This function will handle the show boards and select from boards
     
+    It will return a status, a message and the board selected
+    Status: 
+        0 - proceed to next
+        1 - error, exit program
+        2 - return to main
+    """
     # Load and display the boards
     print("Loading Boards From Your Work Spaces...")
     boards_res = requester.send_get_request(BOARDS_URL)
@@ -64,11 +69,16 @@ def show_select_boards(requester: Requester):
     # Return the board
     return (0, "", boards[board_selection - 1])
 
-def show_select_cols(board: Board):
-    # This function will handle show columns and select from columns
-    # Return state, message, column selected
-    # 0 - success, 1 - error, 2 - return to main
+def show_select_cols(board: Board) -> tuple:
+    """
+    This function will handle show columns and select from columns
     
+    Return state, message, column selected
+    state:
+        0 - success
+        1 - error
+        2 - return to main
+    """
     # Load and display the columns
     print("You are now in board: {}". format(board.get_name()))
     print("Loading Columns From Your Board...")
@@ -105,15 +115,18 @@ def show_select_cols(board: Board):
     # Return the board
     return (0, "", cols[col_selection - 1])
 
-def show_cards(col: Column):
-    # This function will show all the cards in the column
+def show_cards(col: Column) -> None:
+    """This function will show all the cards in the column"""
     print("You are in column: {}, with cards:".format(col.get_name()))
     cards = col.get_cards()
     print_values(cards)
 
-def show_and_select_labels(board: Board):
-    # This function will prompt for card name and comment, and labels
-    # Return status, name, desc, label_ids
+def show_and_select_labels(board: Board) -> tuple:
+    """
+    This function will prompt for card name and comment, and labels
+    
+    Return status, name, desc, label_ids
+    """
     card_name = None
     # Prompt for card name
     while True:
@@ -149,10 +162,10 @@ def show_and_select_labels(board: Board):
         label_set.add(labels[label_selection - 1].get_id())
         print("=====Attached label {}".format(label_selection))
     # Check for whether there are labels selected
-    return True, card_name, card_desc, label_set
+    return True, card_name, card_desc, list(label_set)
 
-def main():
-    # This is the main logic of the CLI program
+def main() -> None:
+    """This is the main logic of the CLI program"""
     welcome_text = """===============================^^==============================\nWelcome to the Trello CLI program!"""
     print(welcome_text)
     requester = None # The request tool used across the program
@@ -163,8 +176,8 @@ def main():
         sys.exit()
         
     while True:
-        start = input("Are you ready to add a card to your board? (y/n)")
-        if start == 'n':
+        start = input("Are you ready to add a card to your board? ('y' = start, others = exit)")
+        if start != 'y':
             print("======================= Exited program ========================")
             break
         # Select the board
