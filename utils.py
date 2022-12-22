@@ -16,6 +16,8 @@ class Requester:
           'key': self.key,
           'token': self.token
         }
+        if self.key is None or self.token is None:
+            raise ValueError
     
     def send_get_request(self, url: str, params={}) -> dict:
         """Send the get request and return the wrapped result"""
