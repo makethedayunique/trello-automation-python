@@ -130,7 +130,7 @@ def show_and_select_labels(board: Board) -> tuple:
     card_name = None
     # Prompt for card name
     while True:
-        card_name = input("== Input your card name ('x' to exit): ")
+        card_name = input("== Input your card name ('x' to discard): ")
         if card_name == 'x':
             return False, None, None, None
         if card_name is None or card_name.strip() == "":
@@ -138,7 +138,7 @@ def show_and_select_labels(board: Board) -> tuple:
             continue
         break
     # Prompt for card description
-    card_desc = input("== Input your card description ('x' to exit): ")
+    card_desc = input("== Input your card description ('x' to discard): ")
     if card_desc == 'x':
         return False, None, None, None
     # It is allowed that the card description be empty
@@ -147,7 +147,7 @@ def show_and_select_labels(board: Board) -> tuple:
     labels = board.get_labels()
     print_values(labels)
     while True:
-        label_selection = input("=====Select from the above labels by index (input 'c' to cancel selection, 'x' to exit): ")
+        label_selection = input("=====Select from the above labels by index (input 'c' to finish selection, 'x' to discard): ")
         if label_selection == 'x':
             return False, None, None, None
         if label_selection == 'c':
