@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 This is the trello add-card CLI program
 
@@ -9,6 +10,7 @@ from utils import Requester
 from models import Requester, Board, Column
 from settings import BOARDS_URL
 import sys
+import click
 
 def print_values(values: list) -> None:
     """This function will print the iterable along with their indexes"""
@@ -164,10 +166,12 @@ def show_and_select_labels(board: Board) -> tuple:
     # Check for whether there are labels selected
     return True, card_name, card_desc, list(label_set)
 
-def main() -> None:
+@click.command()
+@click.option('--name', prompt="Your name", help='User name to be greeted')
+def main(name) -> None:
     """This is the main logic of the CLI program"""
-    welcome_text = """===============================^^==============================\nWelcome to the Trello CLI program!"""
-    print(welcome_text)
+    welcome_text = """===============================^^==============================\n{}, welcome to the Trello CLI program!""".format(name)
+    click.echo(welcome_text)
     requester = None # The request tool used across the program
     try:
         requester = Requester()

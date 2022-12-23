@@ -25,28 +25,48 @@ apitoken=yourapitoken
 
 #### Step3: Install the dependencies
 
+**Method 1:**
+
 Run the following command in your terminal to install the necessary dependencies. You may replace the "/path/to/" according to your environment.
 
 ```shell
 pip install -r /path/to/requirements.txt
 ```
 
+**Method 2:**
+
+You can also install the required dependencies by running. This command will also set up the command line command for you.
+
+```shell
+pip install --editable .
+```
+
 #### Step 4: Run the program
+
+**Method 1:**
 
 The entry of the program is "trello-automation-python/app.py", you can either run it from an editor with python interpreter or the terminal.
 
 For terminal running, get inside of "trello-automation-python/" and run:
 
 ```shell
-python3 app.py
+python3 app.py [--name yourname]
 ```
 
 You will see the welcome message and you can add cards to your Trello workspace following the prompt.
 
 ```javadoc
 ===============================^^==============================
-Welcome to the Trello CLI program!
+yourname, Welcome to the Trello CLI program!
 Are you ready to add a card to your board? (y/n)
+```
+
+**Method 2:**
+
+If you used method 2 in step 3, you can now run the application by:
+
+```shell
+trello-add
 ```
 
 ## Next Steps
