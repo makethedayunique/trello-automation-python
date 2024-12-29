@@ -130,3 +130,6 @@ dmypy.json
 
 # Mac OS related
 .DS_Store
+
+# Customized file
+/tmp
